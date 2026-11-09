@@ -126,3 +126,5 @@ CONTAINER ID   IMAGE     COMMAND                  CREATED              STATUS   
 ```
 
 ### Step 4
+
+![nginx](images/e2.2.png)
