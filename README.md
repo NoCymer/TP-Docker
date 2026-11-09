@@ -137,3 +137,31 @@ mon_nginx
 ❯ docker rm mon_nginx
 mon_nginx
 ```
+
+## Compte endu exercie déploiement d'une application Python Flask
+
+### Step 3
+
+```bash
+❯ docker build -t e3-app .
+[+] Building 6.7s (8/8) FINISHED                                                                                                                                                                                           docker:desktop-linux
+ => [internal] load build definition from dockerfile                                                                                                                                                                                       0.0s
+ => => transferring dockerfile: 178B                                                                                                                                                                                                       0.0s
+ => [internal] load metadata for docker.io/library/python:3.12-slim-trixie                                                                                                                                                                 0.5s
+ => [internal] load .dockerignore                                                                                                                                                                                                          0.0s
+ => => transferring context: 165B                                                                                                                                                                                                          0.0s
+ => [internal] load build context                                                                                                                                                                                                          0.1s
+ => => transferring context: 256B                                                                                                                                                                                                          0.0s
+ => CACHED [1/4] FROM docker.io/library/python:3.12-slim-trixie@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b                                                                                                    0.1s
+ => => resolve docker.io/library/python:3.12-slim-trixie@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b                                                                                                           0.1s
+ => [2/4] COPY . .                                                                                                                                                                                                                         0.1s
+ => [3/4] RUN pip install --no-cache-dir -r requirements.txt                                                                                                                                                                               3.4s
+ => exporting to image                                                                                                                                                                                                                     2.1s
+ => => exporting layers                                                                                                                                                                                                                    0.9s
+ => => exporting manifest sha256:7ae67bab3b87db06fc9c60723794a6e6a513c0eacde0a35eecb2cf5ec904dfa2                                                                                                                                          0.1s
+ => => exporting config sha256:225cc276b71d106d801cf180b80951e7c60e6daf9cbfbaa66656f44d6f3ec5d2                                                                                                                                            0.1s
+ => => exporting attestation manifest sha256:8be48f0dd13e46102bb505d79c5951c13a7c27585e3d50095f26033fa7cc979d                                                                                                                              0.1s
+ => => exporting manifest list sha256:d5e3e8ad6dee355c511169e7f24e5e1b7a17bb4a3eca7a0e4121af2b4dbff852                                                                                                                                     0.1s
+ => => naming to docker.io/library/e3-app:latest                                                                                                                                                                                           0.0s
+ => => unpacking to docker.io/library/e3-app:latest
+```
