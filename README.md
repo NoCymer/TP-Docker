@@ -128,3 +128,12 @@ CONTAINER ID   IMAGE     COMMAND                  CREATED              STATUS   
 ### Step 4
 
 ![nginx](images/e2.2.png)
+
+### Step 5
+
+```bash
+❯ docker stop mon_nginx
+mon_nginx
+❯ docker rm mon_nginx
+mon_nginx
+```
