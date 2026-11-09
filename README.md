@@ -64,3 +64,11 @@ For more examples and ideas, visit:
 ❯ docker ps
 CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 ```
+
+### Step 6
+
+```bash
+❯ docker ps -a
+CONTAINER ID   IMAGE         COMMAND    CREATED         STATUS                     PORTS     NAMES
+1d5055564397   hello-world   "/hello"   2 minutes ago   Exited (0) 2 minutes ago             elastic_visvesvaraya
+```
