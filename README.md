@@ -117,8 +117,6 @@ docker.io/library/nginx:latest
 1d0729dda358e3b0261db82f3a218aaf0fe95e745582430147f2a2d82e780b80
 ```
 
-![nginx](images/e2.2.png)
-
 ### Step 3
 
 ```bash
@@ -126,3 +124,5 @@ docker.io/library/nginx:latest
 CONTAINER ID   IMAGE     COMMAND                  CREATED              STATUS              PORTS                                     NAMES
 1d0729dda358   nginx     "/docker-entrypoint.…"   About a minute ago   Up About a minute   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   mon_nginx
 ```
+
+### Step 4
