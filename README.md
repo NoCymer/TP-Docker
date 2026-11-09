@@ -87,3 +87,53 @@ CONTAINER ID   IMAGE         COMMAND    CREATED         STATUS                  
 Untagged: hello-world:latest
 Deleted: sha256:c567b231f65614688711a75f31518a064258a51d442117a3e771a3a8fdba78ef
 ```
+
+## Compte rendu exercice création d'un serveur web avec Docker
+
+### Step 1
+
+```bash
+❯ docker pull nginx
+Using default tag: latest
+latest: Pulling from library/nginx
+6d2e43921e9e: Pull complete
+7cb4701ce7cd: Pull complete
+bbb080c71d50: Pull complete
+1724c05f72c6: Pull complete
+37fb86c2a767: Pull complete
+512ac5e7ce8e: Pull complete
+1962e1ff75b4: Pull complete
+d2c7e31f04a3: Download complete
+4582dace95e2: Download complete
+Digest: sha256:165ddde8751e75a1c907d24ef10d9f6deb08b57e0fe56caf67512486aff76d82
+Status: Downloaded newer image for nginx:latest
+docker.io/library/nginx:latest
+```
+
+### Step 2
+
+```bash
+❯ docker run -d -p 8080:80 --name mon_nginx nginx
+1d0729dda358e3b0261db82f3a218aaf0fe95e745582430147f2a2d82e780b80
+```
+
+### Step 3
+
+```bash
+❯ docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED              STATUS              PORTS                                     NAMES
+1d0729dda358   nginx     "/docker-entrypoint.…"   About a minute ago   Up About a minute   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   mon_nginx
+```
+
+### Step 4
+
+![nginx](images/e2.2.png)
+
+### Step 5
+
+```bash
+❯ docker stop mon_nginx
+mon_nginx
+❯ docker rm mon_nginx
+mon_nginx
+```
