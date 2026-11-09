@@ -165,3 +165,11 @@ mon_nginx
  => => naming to docker.io/library/e3-app:latest                                                                                                                                                                                           0.0s
  => => unpacking to docker.io/library/e3-app:latest
 ```
+
+```bash
+❯ docker run -d \
+  --name e3-app \
+  -p 5000:5000 \
+  e3-app
+b3492dfe47d4a3d126777726d40e02fa0f6fbee4777a4fe15676f54515d0a074
+```
