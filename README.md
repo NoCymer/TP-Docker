@@ -72,3 +72,10 @@ CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 CONTAINER ID   IMAGE         COMMAND    CREATED         STATUS                     PORTS     NAMES
 1d5055564397   hello-world   "/hello"   2 minutes ago   Exited (0) 2 minutes ago             elastic_visvesvaraya
 ```
+
+### Step 7
+
+```bash
+❯ docker rm 1d5055564397
+1d5055564397
+```
