@@ -109,3 +109,12 @@ Digest: sha256:165ddde8751e75a1c907d24ef10d9f6deb08b57e0fe56caf67512486aff76d82
 Status: Downloaded newer image for nginx:latest
 docker.io/library/nginx:latest
 ```
+
+### Step 2
+
+```bash
+❯ docker run -d -p 8080:80 --name mon_nginx nginx
+1d0729dda358e3b0261db82f3a218aaf0fe95e745582430147f2a2d82e780b80
+```
+
+![nginx](images/e2.2.png)
