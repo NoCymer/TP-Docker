@@ -57,3 +57,10 @@ For more examples and ideas, visit:
  https://docs.docker.com/get-started/
 
 ```
+
+### Step 5
+
+```bash
+❯ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+```
