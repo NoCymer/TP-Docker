@@ -79,3 +79,11 @@ CONTAINER ID   IMAGE         COMMAND    CREATED         STATUS                  
 ❯ docker rm 1d5055564397
 1d5055564397
 ```
+
+### Step 8
+
+```bash
+❯ docker rmi hello-world
+Untagged: hello-world:latest
+Deleted: sha256:c567b231f65614688711a75f31518a064258a51d442117a3e771a3a8fdba78ef
+```
