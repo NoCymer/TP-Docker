@@ -118,3 +118,11 @@ docker.io/library/nginx:latest
 ```
 
 ![nginx](images/e2.2.png)
+
+### Step 3
+
+```bash
+❯ docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED              STATUS              PORTS                                     NAMES
+1d0729dda358   nginx     "/docker-entrypoint.…"   About a minute ago   Up About a minute   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   mon_nginx
+```
