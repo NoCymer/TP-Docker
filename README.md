@@ -177,3 +177,40 @@ b3492dfe47d4a3d126777726d40e02fa0f6fbee4777a4fe15676f54515d0a074
 ### Step 4
 
 ![HelloWorld](images/e3.4.png)
+
+## Compte endu exercie utilisation de docker compose
+
+### Step 3
+
+```bash
+❯ docker compose up --build -d
+[+] Building 14.6s (10/10) FINISHED
+ => [internal] load local bake definitions                                                                                                                                                                                                 0.0s
+ => => reading from stdin 562B                                                                                                                                                                                                             0.0s
+ => [internal] load build definition from dockerfile                                                                                                                                                                                       0.0s
+ => => transferring dockerfile: 178B                                                                                                                                                                                                       0.0s
+ => [internal] load metadata for docker.io/library/python:3.12-slim-trixie                                                                                                                                                                 6.0s
+ => [internal] load .dockerignore                                                                                                                                                                                                          0.0s
+ => => transferring context: 165B                                                                                                                                                                                                          0.0s
+ => [internal] load build context                                                                                                                                                                                                          0.0s
+ => => transferring context: 566B                                                                                                                                                                                                          0.0s
+ => CACHED [1/4] FROM docker.io/library/python:3.12-slim-trixie@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b                                                                                                    0.1s
+ => => resolve docker.io/library/python:3.12-slim-trixie@sha256:5e2bdb1b0d542d5039cffb8181c65930093949194a65c365dfb1b0fe13a4fa5b                                                                                                           0.1s
+ => [2/4] COPY . .                                                                                                                                                                                                                         0.1s
+ => [3/4] RUN pip install --no-cache-dir -r requirements.txt                                                                                                                                                                               5.9s
+ => exporting to image                                                                                                                                                                                                                     1.9s
+ => => exporting layers                                                                                                                                                                                                                    1.2s
+ => => exporting manifest sha256:419d447e35539aed2730344972f2a70a2150aff9db24817118f1c17772b12f77                                                                                                                                          0.1s
+ => => exporting config sha256:33c6e57524f934eb656e7cf8ac0ec64949c0d0df919bdc5f6fb2a3012a14f602                                                                                                                                            0.1s
+ => => exporting attestation manifest sha256:0723de4d9bcb5d4223f016cda8924b644be4b405a220049c38abaccadfe6a253                                                                                                                              0.1s
+ => => exporting manifest list sha256:debd5ee923391d27cfe085464afad2751b74718db481403fd42d5088f289968b                                                                                                                                     0.1s
+ => => naming to docker.io/library/e3-app-app:latest                                                                                                                                                                                       0.0s
+ => => unpacking to docker.io/library/e3-app-app:latest                                                                                                                                                                                    0.4s
+ => resolving provenance for metadata file                                                                                                                                                                                                 0.0s
+[+] up 3/3
+ ✔ Image e3-app-app  Built                                                                                                                                                                                                                 14.7s
+ ✔ Container mongodb Running                                                                                                                                                                                                                0.0s
+ ✔ Container e3-app  Started                                                                                                                                                                                                                0.5s
+```
+
+![HealthyMongo](images/e4.3.png)
