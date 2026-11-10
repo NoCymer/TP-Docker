@@ -26,7 +26,7 @@ Verification : Two requests can now be handled simultaneously especially when se
 
 The big file was served from the same container it was hosted from, which is in itself bad practice as we should try to segregate data from the processing of it. If for instance we wanted to create multiple instances for load balancing, the large file would in fact be duplicated across all of them which would be a waste of space, therefore a new container was created which purpose is to store this big file.
 
----
+### Docker config optimizations
 
 The docker file provides uses root user whilst it it unecessarry and unsafe, therfore we remove it for security and tidyness purposes
 
@@ -49,3 +49,23 @@ The docker file exposes 3 ports [3000, 4000, 5000] whilst only port 3000 is used
 ```diff
 [~] EXPOSE 3000
 ```
+
+### Image size optimizations
+
+- Initial image size : `1.88GB`
+- Initial build time : `32.8s`
+
+---
+
+We have an issue where we are copying node_modules in the image which is bad practice, we should let `npm install` take care of intalling the dependencies, also we are already running `npm install` aswell so effectively doing the same step 2 times.
+
+```diff
+[-] COPY node_modules ./node_modules
+```
+
+- Image size : `1.88GB`
+- Initial build time : `30.2s`
+
+There is no tangible difference, but its better practice.
+
+---
