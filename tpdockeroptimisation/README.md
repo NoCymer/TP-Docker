@@ -69,3 +69,19 @@ We have an issue where we are copying node_modules in the image which is bad pra
 There is no tangible difference, but its better practice.
 
 ---
+
+We are currently running apt update and changing the locale which is useless and time consuming, we can sefely remove this step without any incidence on the curent app. It will also reduce the number of layers of the image
+
+- Layer count before : 17
+
+```diff
+[-] RUN apt-get update && apt-get install -y build-essential ca-certificates locales && echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && locale-gen
+```
+
+- Layer count after : 16
+- Image size : `1.8GB`
+- Initial build time : `17.1s`
+
+We halved the build time and reduced the image size by ~80 MB
+
+---
