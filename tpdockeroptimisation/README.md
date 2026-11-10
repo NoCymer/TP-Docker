@@ -85,3 +85,19 @@ We are currently running apt update and changing the locale which is useless and
 We halved the build time and reduced the image size by ~80 MB
 
 ---
+
+We are currently using `node:latest` which is 1. bad practice because we want a fixed version not the lates for environment stability and reproductability and also the image node is not optimized we will therfore use `node:26-alpine3.23` which is a lightweight image, also as we dont build the app its unnecessary to build the app, so multi stage build is useless, we just have to run the app.
+
+```diff
+[~] FROM node:26-alpine3.23
+```
+
+```diff
+[-] RUN npm run build
+```
+
+- Layer count after : 12
+- Image size : `275.93MB`
+- Initial build time : `12.5s`
+
+We reduced the time and layer count whilst dividing the image size by 6.5.
