@@ -4,8 +4,6 @@
 
 ### Optimisation
 
-#### App side
-
 The logging middleware was reinventing the wheel, verbose and quire useless considering the lack of information it provided. It was switched to the dependency `morgan` that is widely used and provides insightful information to the logs of the application.
 We went from uninsightful log such as
 
@@ -28,6 +26,6 @@ Verification : Two requests can now be handled simultaneously especially when se
 
 ---
 
-#### Docker compose side
+The big file was served from the same container it was hosted from, which is in itself bad practice as we should try to segregate data from the processing of it. If for instance we wanted to create multiple instances for load balancing, the large file would in fact be duplicated across all of them which would be a waste of space, therefore a new container was created which purpose is to store this big file.
 
 ### Security

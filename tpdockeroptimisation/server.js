@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('node:fs');
 const morgan = require('morgan');
 const path = require('node:path');
+const http = require('node:http');
 
 const app = express();
 
@@ -14,27 +15,36 @@ app.get('/', (req, res) => {
 
 
 app.get('/big', (req, res) => {
-    const filePath = path.join(__dirname, 'maybe-big-file.txt');
-    if (fs.existsSync(filePath)) {
-        const stream = fs.createReadStream(filePath);
+    const fileUrl = `${process.env.FILE_SERVER_URL}/maybe-big-file.txt`;
 
-        res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    const upstream = http.get(fileUrl, (fileRes) => {
+        res.status(fileRes.statusCode || 502);
 
-        stream.pipe(res);
+        res.setHeader(
+            'Content-Type',
+            fileRes.headers['content-type'] || 'application/octet-stream'
+        );
 
-        stream.on('error', (err) => {
-            console.error('File streaming error:', err);
+        fileRes.pipe(res);
+    });
 
-            if (!res.headersSent) {
-                res.status(500).send('Erreur lors de la lecture du fichier');
-            } else {
-                res.destroy(err);
-            }
-        });
-    } else {
-        res.send('Fichier introuvable');
-    }
+    upstream.on('error', (err) => {
+        console.error('File server error:', err);
+
+        if (!res.headersSent) {
+            res.status(502).send('File server unavailable');
+        } else {
+            res.destroy(err);
+        }
+    });
+
+    res.on('close', () => {
+        if (!upstream.destroyed) {
+            upstream.destroy();
+        }
+    });
 });
+
 
 
 const PORT = process.env.PORT || 3000;
