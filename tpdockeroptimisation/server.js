@@ -1,15 +1,12 @@
 const express = require('express');
 const fs = require('fs');
+const morgan = require('morgan');
 const path = require('path');
 
 const app = express();
 
-// Middleware verbeux et un peu inutile
-app.use((req, res, next) => {
-    console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
-    next();
-});
-
+// Logging middleware.
+app.use(morgan('combined'))
 
 app.get('/', (req, res) => {
     res.send('Hello world — serveur volontairement non optimisé mais fonctionnel');
