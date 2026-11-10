@@ -1,7 +1,7 @@
 const express = require('express');
-const fs = require('fs');
+const fs = require('node:fs');
 const morgan = require('morgan');
-const path = require('path');
+const path = require('node:path');
 
 const app = express();
 
@@ -16,8 +16,21 @@ app.get('/', (req, res) => {
 app.get('/big', (req, res) => {
     const filePath = path.join(__dirname, 'maybe-big-file.txt');
     if (fs.existsSync(filePath)) {
-        const data = fs.readFileSync(filePath, 'utf8');
-        res.send(data.replace(/\n/g, '<br/>'));
+        const stream = fs.createReadStream(filePath);
+
+        res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+
+        stream.pipe(res);
+
+        stream.on('error', (err) => {
+            console.error('File streaming error:', err);
+
+            if (!res.headersSent) {
+                res.status(500).send('Erreur lors de la lecture du fichier');
+            } else {
+                res.destroy(err);
+            }
+        });
     } else {
         res.send('Fichier introuvable');
     }
