@@ -1,0 +1,21 @@
+services:
+  app:
+    build: .
+    container_name: e3-app
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    depends_on: [mongo]
+
+  mongo:
+    image: mongo:8
+    container_name: mongodb
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_ROOT_PASSWORD}
+
+volumes:
+  mongo_data:
