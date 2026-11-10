@@ -2,8 +2,6 @@
 
 ## Issues
 
-### Optimisation
-
 The logging middleware was reinventing the wheel, verbose and quire useless considering the lack of information it provided. It was switched to the dependency `morgan` that is widely used and provides insightful information to the logs of the application.
 We went from uninsightful log such as
 
@@ -28,4 +26,26 @@ Verification : Two requests can now be handled simultaneously especially when se
 
 The big file was served from the same container it was hosted from, which is in itself bad practice as we should try to segregate data from the processing of it. If for instance we wanted to create multiple instances for load balancing, the large file would in fact be duplicated across all of them which would be a waste of space, therefore a new container was created which purpose is to store this big file.
 
-### Security
+---
+
+The docker file provides uses root user whilst it it unecessarry and unsafe, therfore we remove it for security and tidyness purposes
+
+```diff
+[-] USER root
+```
+
+---
+
+The docker file specifies dev environment which is not safe and can cause optimization issues.
+
+```diff
+[-] ENV NODE_ENV=development
+```
+
+---
+
+The docker file exposes 3 ports [3000, 4000, 5000] whilst only port 3000 is used, we can safely remove the two last entries form this list to clean up the image.
+
+```diff
+[~] EXPOSE 3000
+```
